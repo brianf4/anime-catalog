@@ -23,6 +23,8 @@
  * 
  */
 
+// basketball picture link : https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Basketball_clipart_ball.png/640px-Basketball_clipart_ball.png
+
 
 const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
 const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
@@ -92,3 +94,102 @@ function removeLastCard() {
     titles.pop(); // Remove last item in titles array
     showCards(); // Call showCards again to refresh
 }
+
+async function logEastTeams() {
+    // public basketball api url
+    const url = "https://api.balldontlie.io/v1/teams/"
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
+        }
+    })
+    const bballTeams = await response.json();
+    const allTeams = bballTeams.data.slice(0, 30)
+
+    const eastTeams = allTeams.filter((team) => team.conference === 'East');
+
+
+    for (let i = 0; i < eastTeams.length; i++) {
+        const node = document.createElement("li")
+        const textnode = document.createTextNode(eastTeams[i].name)
+        node.appendChild(textnode)
+        document.getElementById("eastTeam").appendChild(node)
+    }
+
+}
+
+async function logWestTeams() {
+    // public basketball api url
+    const url = "https://api.balldontlie.io/v1/teams/"
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
+        }
+    })
+    const bballTeams = await response.json();
+    const allTeams = bballTeams.data.slice(0, 30)
+
+    const westTeams = allTeams.filter((team) => team.conference === 'West');
+
+    for (let i = 0; i < westTeams.length; i++) {
+        const node = document.createElement("li")
+        const textnode = document.createTextNode(westTeams[i].name)
+        node.appendChild(textnode)
+        document.getElementById("westTeam").appendChild(node)
+    }
+}
+
+async function getSpecificTeam() {
+    const url = "https://api.balldontlie.io/v1/teams/1"
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
+        }
+    })
+    const team = await response.json();
+    console.log(team);
+
+}
+
+
+async function getAllPlayers() {
+    const url = "https://api.balldontlie.io/v1/players?search=davis"
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
+        }
+    })
+    const player = await response.json();
+    console.log(player);
+
+}
+
+
+async function statsForPlayer() {
+    const url = "https://api.balldontlie.io/v1/stats?seasons[]=2022?player_ids[]=19&postseason=true"
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
+        }
+    })
+    const stats = await response.json();
+    console.log(stats);
+
+}
+
+
