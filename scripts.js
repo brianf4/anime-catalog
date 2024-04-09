@@ -39,6 +39,9 @@ let titles = [
 // Your final submission should have much more data than this, and 
 // you should use more than just an array of strings to store it all.
 
+import anime from './animeDB.js'
+console.log(anime.data[0])
+
 
 // This function adds cards the page to display the data in the array
 function showCards() {
@@ -121,75 +124,25 @@ async function logEastTeams() {
 
 }
 
-async function logWestTeams() {
-    // public basketball api url
-    const url = "https://api.balldontlie.io/v1/teams/"
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
-        }
-    })
-    const bballTeams = await response.json();
-    const allTeams = bballTeams.data.slice(0, 30)
+function showAnimeList() {
 
-    const westTeams = allTeams.filter((team) => team.conference === 'West');
+    for (let i = 0; i < anime.data.length; i++) {
+    const li_node = document.createElement("li")
+    const h2_node = document.createElement("h2")
+    const img_node = document.createElement("img")
+    const p_node = document.createElement("p")
+    const h2_text = document.createTextNode(anime.data[i].title_english)
+    const img_url= anime.data[i].images.jpg.image_url
+    const p_text = document.createTextNode(anime.data[i].synopsis)
 
-    for (let i = 0; i < westTeams.length; i++) {
-        const node = document.createElement("li")
-        const textnode = document.createTextNode(westTeams[i].name)
-        node.appendChild(textnode)
-        document.getElementById("westTeam").appendChild(node)
+
+    document.getElementById("animeList").appendChild(li_node)
+    li_node.appendChild(h2_node).appendChild(h2_text)
+    li_node.appendChild(img_node)
+    document.getElementsByTagName("img")[i].setAttribute("src", img_url)
+    li_node.appendChild(p_node).appendChild(p_text)
+
     }
 }
-
-async function getSpecificTeam() {
-    const url = "https://api.balldontlie.io/v1/teams/1"
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
-        }
-    })
-    const team = await response.json();
-    console.log(team);
-
-}
-
-
-async function getAllPlayers() {
-    const url = "https://api.balldontlie.io/v1/players?search=davis"
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
-        }
-    })
-    const player = await response.json();
-    console.log(player);
-
-}
-
-
-async function statsForPlayer() {
-    const url = "https://api.balldontlie.io/v1/stats?seasons[]=2022?player_ids[]=19&postseason=true"
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "1c86c814-f67b-4a42-be3f-0f9c7b60ffc2"
-        }
-    })
-    const stats = await response.json();
-    console.log(stats);
-
-}
-
-
+showAnimeList();
+console.log()
