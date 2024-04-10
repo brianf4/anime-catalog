@@ -8,6 +8,10 @@ li {
     list-style-type: none;
 }
 
+i {
+    visibility: hidden;
+}
+
 #animeList > li {
     border: 2px solid black;
     display: flex;
@@ -18,18 +22,14 @@ li {
     width: 80%;
 }
 
-.watch-list {
+.watchList-container {
     border: 2px solid black;
+    width: 20%;
 }
 
 .main-body {
     display: flex;
 }
-
-.watch-list {
-    width: 20%;
-}
-
 
 
 .main-header {
