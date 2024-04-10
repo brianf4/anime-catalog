@@ -1,47 +1,27 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Trending Anime</title>
+        <meta name="description" content="A Catalog of trending anime shows">
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles">
-    <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-    <header class="main-header">
-        <h1 class="title">Anime</h1>
-    </header>
-    <div id="card-container">
-        
-    </div>
-    <div class="card" style="display: none;">
-        <div class="card-content">
-            <h2>TV Show Title</h2>
-            <!-- <img src="" alt="TV Show Poster"> -->
-            <ul>
-                <li>Bullet Point 1</li>
-                <li>Bullet Point 2</li>
-                <li>Bullet Point 3</li>
-            </ul>
+    <body>
+        <header class="main-header">
+            <h1 class="title">Anime</h1>
+            <h1>Trending Anime</h1>
+        </header>
         </div>
-    </div>
-    <div class="footer">
-        <button onclick="quoteAlert();">
-            Get A Quote!
-        </button>
-        <button onclick="removeLastCard();">
-            Remove A Card!
-        </button>
-    </div>
 
-    <div>
-        <h1>Top 25 Anime show</h1>
-        <div class="">
-            <ul id="animeList">
-            </ul>
+        <div class="main-body">
+            <div class="animeList-container">
+                <ul id="animeList">
+                </ul>
+            </div>
+            <div class="watch-list">
+
+            </div>
         </div>
-    </div>
-    <script type="module" src="scripts.js"></script>
-</body>
-
+        <script type="module" src="scripts.js"></script>
+    </body>
 </html>

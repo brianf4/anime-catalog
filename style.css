@@ -1,5 +1,5 @@
 html,
-body {
+ul {
     margin: 0;
     padding: 0;
 }
@@ -10,7 +10,27 @@ li {
 
 #animeList > li {
     border: 2px solid black;
+    display: flex;
 }
+
+.animeList-container {
+    border: 2px solid red;
+    width: 80%;
+}
+
+.watch-list {
+    border: 2px solid black;
+}
+
+.main-body {
+    display: flex;
+}
+
+.watch-list {
+    width: 20%;
+}
+
+
 
 .main-header {
     background-color: rgba(0, 0, 0, .3);
@@ -40,11 +60,11 @@ li {
     margin: 5px;
 }
 
-.card-content {
+/* .card-content {
     padding: 20px;
     font-family: "Verdana";
     color: #777;
-}
+} */
 
 .card-content h2 {
     margin-top: 0;

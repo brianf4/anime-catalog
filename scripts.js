@@ -125,24 +125,25 @@ async function logEastTeams() {
 }
 
 function showAnimeList() {
+    const list = document.getElementById("animeList");
 
     for (let i = 0; i < anime.data.length; i++) {
-    const li_node = document.createElement("li")
-    const h2_node = document.createElement("h2")
-    const img_node = document.createElement("img")
-    const p_node = document.createElement("p")
-    const h2_text = document.createTextNode(anime.data[i].title_english)
-    const img_url= anime.data[i].images.jpg.image_url
-    const p_text = document.createTextNode(anime.data[i].synopsis)
-
-
-    document.getElementById("animeList").appendChild(li_node)
-    li_node.appendChild(h2_node).appendChild(h2_text)
-    li_node.appendChild(img_node)
-    document.getElementsByTagName("img")[i].setAttribute("src", img_url)
-    li_node.appendChild(p_node).appendChild(p_text)
-
+        const listItem = document.createElement("li");
+        listItem.innerHTML = 
+        `
+        <img class="animeImg" src=${anime.data[i].images.jpg.image_url} alt="">
+        <div class="animeContent">
+            <h2 class="animeTitle">${anime.data[i].title_english}</h2>
+            <p class="animeDesc">${anime.data[i].synopsis}</p>
+            <button>pres</button>
+        </div>
+        `
+        list.appendChild(listItem);
     }
+
 }
 showAnimeList();
-console.log()
+
+// const originalListItem = document.querySelector('#animeList li');
+// const clonedListItem = originalListItem.cloneNode(true);
+// document.querySelector('#animeList').appendChild(clonedListItem);
